@@ -1,0 +1,87 @@
+-- Create the database
+CREATE DATABASE EmployeeDB;
+
+-- Use the created database
+USE EmployeeDB;
+
+
+-- Create the Employee table
+CREATE TABLE Employee (
+    EMPLOYEE_ID INT AUTO_INCREMENT PRIMARY KEY,
+    FIRST_NAME VARCHAR(50),
+    LAST_NAME VARCHAR(50),
+    DEPARTMENT VARCHAR(50),
+    SALARY DECIMAL(10, 2),
+    JOIN_DATE DATE
+);
+
+-- Insert sample data into the Employee table
+INSERT INTO Employee (FIRST_NAME, LAST_NAME, DEPARTMENT, SALARY, JOIN_DATE) 
+VALUES 
+('John', 'Doe', 'HR', 50000.00, '2013-01-15'),
+('Jane', 'Smith', 'IT', 60000.00, '2014-02-20'),
+('Michael', 'Johnson', 'Admin', 70000.00, '2014-02-10'),
+('Vipul', 'Patel', 'Finance', 80000.00, '2015-03-25'),
+('Satish', 'Kumar', 'Admin', 90000.00, '2015-04-30'),
+('Amitabh', 'Bachchan', 'IT', 100000.00, '2016-05-15');
+
+-- Execute the queries
+-- Q-1
+SELECT FIRST_NAME AS "<EMPLOYEE_NAME>" FROM Employee;
+
+-- Q-2
+SELECT UPPER(FIRST_NAME) FROM Employee;
+
+-- Q-3
+SELECT DISTINCT DEPARTMENT FROM Employee;
+
+-- Q-4
+SELECT LEFT(FIRST_NAME, 3) FROM Employee;
+
+-- Q-5
+SELECT POSITION('a' IN FIRST_NAME) FROM Employee WHERE FIRST_NAME = 'Amitabh';
+
+-- Q-6
+SELECT RTRIM(FIRST_NAME) FROM Employee;
+
+-- Q-7
+SELECT LTRIM(DEPARTMENT) FROM Employee;
+
+-- Q-8
+SELECT DISTINCT LENGTH(DEPARTMENT) FROM Employee;
+
+-- Q-9
+SELECT REPLACE(FIRST_NAME, 'a', 'A') FROM Employee;
+
+-- Q-10
+SELECT CONCAT(FIRST_NAME, ' ', LAST_NAME) AS COMPLETE_NAME FROM Employee;
+
+-- Q-11
+SELECT * FROM Employee ORDER BY FIRST_NAME ASC;
+
+-- Q-12
+SELECT * FROM Employee ORDER BY FIRST_NAME ASC, DEPARTMENT DESC;
+
+-- Q-13
+SELECT * FROM Employee WHERE FIRST_NAME IN ('Vipul', 'Satish');
+
+-- Q-14
+SELECT * FROM Employee WHERE FIRST_NAME NOT IN ('Vipul', 'Satish');
+
+-- Q-15
+SELECT * FROM Employee WHERE DEPARTMENT = 'Admin';
+
+-- Q-16
+SELECT * FROM Employee WHERE FIRST_NAME LIKE '%a%';
+
+-- Q-17
+SELECT * FROM Employee WHERE FIRST_NAME LIKE '%a';
+
+-- Q-18
+SELECT * FROM Employee WHERE FIRST_NAME LIKE '______h%';
+
+-- Q-19
+SELECT * FROM Employee WHERE SALARY BETWEEN 100000 AND 500000;
+
+-- Q-20
+SELECT * FROM Employee WHERE JOIN_DATE BETWEEN '2014-02-01' AND '2014-02-28';
